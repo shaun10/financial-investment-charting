@@ -1,2 +1,4 @@
-# financial-investment-charting
-Automatically charts predefined investments, equities, ETFs, mutual funds, etc, and sends the results to an email distribution list. 
+finance_charting
+================
+
+Program to chart stocks of interest automatically and distribute charts to users. Faster gage of market conditions by email.
