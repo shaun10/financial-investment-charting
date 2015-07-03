@@ -17,21 +17,14 @@ class Charts(object):
 			time.sleep(8)
 	def send_email(self):
 		#pwd = 
+		#me = 
 		os.chdir(self.path)
 		images = os.listdir(self.path)
 		COMMASPACE = ', '
-		#me = 
 		msg = MIMEMultipart()
 		msg['Subject'] = "Daily Stock Charts " + str(charting.today.today())
-		#msg['Body'] = "Overall bearish close equities yesterday continued preference towards bonds, rate hike imminent 2015"
-		#message_subject = "Daily Stock Charts " + str(charting.today.today())
-		#message = "From: %s\r\n" % fromaddr
-        #+ "To: %s\r\n" % toaddr
-        #+ "CC: %s\r\n" % ",".join(cc)
-        #+ "BCC: %s\r\n" % ",".join(bcc)
-        #+ "Subject: %s\r\n" % message_subject
-        #+ "\r\n" 
-        #+ message_text
+		#Add thoughts below on overall sentiment
+		#msg['Body'] = ""
 		msg['From'] = me
 		msg["BCC"] = COMMASPACE.join(self.emails)
 		for image in images:
@@ -54,8 +47,8 @@ class Charts(object):
 		return "Cleaner"
 
 if __name__ == '__main__':
-	#ticker = ["AAPL", "POT", "WWE", "UA", "SCTY", "AMZN", "KORS", "LNKD","TTWO","MSFT", "GOOGL","CMG", "EOG","DIS", "VZ", "TDY", "TASR", "NFLX", "PLD", "AMT", "FB", "F", "YHOO", "TLT", "TSLA", "AGNC", "USO", "YELP","TWTR", "GLD", "SPY", "AMBA", "GPRO", "WFM"]
-	#email = #Add the email here to who this should be sent
+	#ticker = ["AAPL", ##List of tickers you would like to chart"]
+	#email = #Add to whom you would like to send emails, type=list
 	daily = Charts(ticker,email)
 	daily.create_charts()
 	daily.send_email()
