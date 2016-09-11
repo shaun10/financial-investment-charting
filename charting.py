@@ -13,11 +13,12 @@ matplotlib.rcParams['timezone'] = 'US/Pacific-New'
 import matplotlib.pyplot as plt
 import matplotlib.ticker as mticker
 import matplotlib.dates as mdates
-from matplotlib.finance import candlestick
+from matplotlib.finance import quotes_historical_yahoo_ohlc, candlestick_ohlc
+#from matplotlib.finance import candlestick
 import matplotlib
 import pylab
 #trying to append a dir
-sys.path.append('/home/pi/finance_charting/')
+sys.path.append('/home/pi/investment_charting/')
 matplotlib.rcParams.update({'font.size': 9})
 today = datetime.date
 
@@ -113,7 +114,7 @@ def graphData( stock,MA1,MA2):
 
         #ax1 = plt.subplot2grid((6,4), (1,0), rowspan=4, colspan=4, axisbg='#07000d')
         ax1 = plt.subplot2grid((6,4), (1,0), rowspan=4, colspan=4, axisbg='#FFFFFF')
-        candlestick(ax1, newAr[-SP:], width=.6, colorup='#53c156', colordown='#ff1717')
+        candlestick_ohlc(ax1, newAr[-SP:], width=.6, colorup='#53c156', colordown='#ff1717')
 
         Label1 = str(MA1)+' EMA'
         Label2 = str(MA2)+' EMA'
@@ -131,7 +132,7 @@ def graphData( stock,MA1,MA2):
         ax1.spines['left'].set_color("#5998ff")
         ax1.spines['right'].set_color("#5998ff")
         ax1.tick_params(axis='y', colors='w')
-        plt.gca().yaxis.set_major_locator(mticker.MaxNLocator(prune='upper'))
+        #plt.gca().yaxis.set_major_locator(mticker.MaxNLocator(prune='upper'))
         ax1.tick_params(axis='x', colors='w')
         plt.ylabel('Price and Volume')
 
@@ -139,8 +140,8 @@ def graphData( stock,MA1,MA2):
         maLeg = plt.legend(loc=9, ncol=2, prop={'size':7},
                    fancybox=True, borderaxespad=0.)
         maLeg.get_frame().set_alpha(0.4)
-        textEd = pylab.gca().get_legend().get_texts()
-        pylab.setp(textEd[0:5], color = 'black')
+        #textEd = pylab.gca().get_legend().get_texts()
+        #pylab.setp(textEd[0:5], color = 'black')
 
         volumeMin = 0
         
@@ -226,8 +227,8 @@ def graphData( stock,MA1,MA2):
         #plt.suptitle(stock.upper(),color='w')
         plt.suptitle(stock.upper(), color = 'w')
 
-        plt.setp(ax0.get_xticklabels(), visible=False)
-        plt.setp(ax1.get_xticklabels(), visible=False)
+        #plt.setp(ax0.get_xticklabels(), visible=False)
+        #plt.setp(ax1.get_xticklabels(), visible=False)
         
         '''ax1.annotate('Big news!',(date[510],Av1[510]),
             xytext=(0.8, 0.9), textcoords='axes fraction',

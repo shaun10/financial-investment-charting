@@ -16,15 +16,15 @@ class Charts(object):
 			charting.graphData(self.tickers[chart], 50, 100)
 			time.sleep(8)
 	def send_email(self):
-		#pwd = 
-		#me = 
+		me = os.environ['MAIL_USERNAME']
+		pwd = os.environ['MAIL_PASSWORD']
 		os.chdir(self.path)
 		images = os.listdir(self.path)
 		COMMASPACE = ', '
 		msg = MIMEMultipart()
 		msg['Subject'] = "Daily Stock Charts " + str(charting.today.today())
 		#Add thoughts below on overall sentiment
-		#msg['Body'] = ""
+		msg['Body'] = "None"
 		msg['From'] = me
 		msg["BCC"] = COMMASPACE.join(self.emails)
 		for image in images:
@@ -43,12 +43,13 @@ class Charts(object):
 		os.chdir(self.path)
 		images = os.listdir(self.path)
 		for image in images:
-			os.remove(self.path + image)
+			if not ".txt" in image:
+				os.remove(self.path + image)
 		return "Cleaner"
 
 if __name__ == '__main__':
-	#ticker = ["AAPL", ##List of tickers you would like to chart"]
-	#email = #Add to whom you would like to send emails, type=list
+	ticker = ["AAPL"] #Ticker list you would like to chart, type=list
+	#email = Add to whom you would like to send emails, type=list
 	daily = Charts(ticker,email)
 	daily.create_charts()
 	daily.send_email()
