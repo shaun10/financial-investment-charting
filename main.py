@@ -43,32 +43,6 @@ class Charts(object):
 	   	return r
 
 
-	def send_email_old(self):
-		me = os.environ['MAIL_USERNAME']
-		pwd = os.environ['MAIL_PASSWORD']
-		os.chdir(self.path)
-		images = os.listdir(self.image_path)
-		COMMASPACE = ', '
-		msg = MIMEMultipart()
-		msg['Subject'] = "Daily Stock Charts " + str(charting.today.today())
-		#Add thoughts below on overall sentiment
-		msg['Body'] = "None"
-		msg['From'] = me
-		msg["BCC"] = COMMASPACE.join(self.emails)
-		for image in images:
-			fp = open(image, 'rb')
-			img = MIMEImage(fp.read(), _subtype="png")
-			fp.close()
-			msg.attach(img)
-		smtpserver = smtplib.SMTP("smtp.mail.yahoo.com",587)
-		smtpserver.ehlo()
-		smtpserver.starttls()
-		smtpserver.ehlo()
-		smtpserver.login(me, pwd)
-		smtpserver.sendmail(me, self.emails, msg.as_string())
-		return "Email has been sent"
-
-
 	def delete_images(self):
 		os.chdir(self.path)
 		images = os.listdir(self.path)
