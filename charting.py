@@ -1,24 +1,19 @@
 import urllib2
-#importing sys
 import sys
 import time
 import os
 import datetime
 import numpy as np
-#added import above and use for croning
 import matplotlib
-matplotlib.use('Agg')
-#timezone
-matplotlib.rcParams['timezone'] = 'US/Pacific-New'
 import matplotlib.pyplot as plt
 import matplotlib.ticker as mticker
 import matplotlib.dates as mdates
 from matplotlib.finance import quotes_historical_yahoo_ohlc, candlestick_ohlc
-#from matplotlib.finance import candlestick
-import matplotlib
 import pylab
-#trying to append a dir
-sys.path.append('/home/pi/investment_charting/')
+#from mpl_finance import candlestick_ohlc, quotes_historical_yahoo_ohlc
+# matplotlib.use('Agg')
+# matplotlib.rcParams['timezone'] = 'US/Pacific-New'
+
 matplotlib.rcParams.update({'font.size': 9})
 today = datetime.date
 
