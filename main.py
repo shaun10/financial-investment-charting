@@ -81,11 +81,13 @@ class Charts(object):
 
 
 if __name__ == '__main__':
-	tickers = ["AAPL"] #Ticker list you would like to chart, type=list
-	#email = Add to whom you would like to send emails, type=list
-	subject = "Daily Stock Charts {}".format(str(charting.today.today()))
-	message = text_message = "You need to buy!"
-	daily = Charts(tickers)
-	daily.create_charts()
-	daily.send_mail(os.environ['MAIL_USERNAME'], os.environ['MAILGUN_SMTP_LOGIN'], subject, text_message)
-	daily.delete_images()
+	while 1:
+		tickers = ["AAPL"] #Ticker list you would like to chart, type=list
+		#email = Add to whom you would like to send emails, type=list
+		subject = "Daily Stock Charts {}".format(str(charting.today.today()))
+		message = text_message = "You need to buy!"
+		daily = Charts(tickers)
+		daily.create_charts()
+		daily.send_mail(os.environ['MAIL_USERNAME'], os.environ['MAILGUN_SMTP_LOGIN'], subject, text_message)
+		daily.delete_images()
+		time.sleep(86400)
