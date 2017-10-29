@@ -9,7 +9,6 @@ import matplotlib.pyplot as plt
 import matplotlib.ticker as mticker
 import matplotlib.dates as mdates
 from matplotlib.finance import quotes_historical_yahoo_ohlc, candlestick_ohlc
-import pylab
 #from mpl_finance import candlestick_ohlc, quotes_historical_yahoo_ohlc
 # matplotlib.use('Agg')
 # matplotlib.rcParams['timezone'] = 'US/Pacific-New'
@@ -135,8 +134,6 @@ def graphData( stock,MA1,MA2):
         maLeg = plt.legend(loc=9, ncol=2, prop={'size':7},
                    fancybox=True, borderaxespad=0.)
         maLeg.get_frame().set_alpha(0.4)
-        #textEd = pylab.gca().get_legend().get_texts()
-        #pylab.setp(textEd[0:5], color = 'black')
 
         volumeMin = 0
         
